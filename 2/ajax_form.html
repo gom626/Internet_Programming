@@ -1,0 +1,113 @@
+<html>
+<head>
+<script>
+
+function showHint(str) {
+    if (str.length == 0) {
+        document.getElementById("txtHint").innerHTML = "";
+        return;
+    } else {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                myArr=JSON.parse(xmlhttp.responseText);
+                var i;
+                document.getElementById("txtHint").innerHTML="";
+                for(i=0;i<myArr.length;i++){
+                    document.getElementById("txtHint").innerHTML+=myArr[i].key;
+                    //console.log(myArr[i]);
+                    //document.getElementById("txt").innerHTML+= ":";
+                    //document.getElementById("txtHint").innerHTML+=myArr[i].value;
+                    if(i===(myArr.length)-1){}
+                    else{
+                        document.getElementById("txtHint").innerHTML+=" , ";
+                    }
+                }
+            }
+        };
+        xmlhttp.open("GET",
+    "http://cspro.sogang.ac.kr/~cse20151600/cgi-bin/ajax_search.php?q=" + str, true);
+        xmlhttp.send();
+    }
+}
+
+function showName(str) {
+    if (str.length == 0) { 
+        document.getElementById("txt").innerHTML = "";
+        return;
+    } else {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				myArr=JSON.parse(xmlhttp.responseText);
+				var i;
+				document.getElementById("txt").innerHTML="";
+				for(i=0;i<myArr.length;i++){
+					//document.getElementById("txt").innerHTML+=myArr[i].key;
+					//console.log(myArr[i]);
+					//document.getElementById("txt").innerHTML+= ":";
+					document.getElementById("txt").innerHTML+=myArr[i].value;
+					if(i===(myArr.length)-1){}
+					else{
+						document.getElementById("txt").innerHTML+=" , ";
+					}
+				}
+                //document.getElementById("txt").innerHTML = xmlhttp.responseText;
+            }
+        };
+        xmlhttp.open("GET", 
+    "http://cspro.sogang.ac.kr/~cse20151600/cgi-bin/ajax_search.php?q=" + str, true);
+        xmlhttp.send();
+    }
+}
+function showALL(str) {
+    if (str.length == 0) {
+        document.getElementById("tot").innerHTML = "";
+        return;
+    } else {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                myArr=JSON.parse(xmlhttp.responseText);
+                var i;
+                document.getElementById("tot").innerHTML="";
+                for(i=0;i<myArr.length;i++){
+                    //console.log(myArr[i]);
+                    //console.log(myArr[i].key);
+                    document.getElementById("tot").innerHTML+=myArr[i].key;
+                    //console.log(myArr[i]);
+                    document.getElementById("tot").innerHTML+= ":";
+                    document.getElementById("tot").innerHTML+=myArr[i].value;
+                    if(i===(myArr.length)-1){}
+                    else{
+                        document.getElementById("tot").innerHTML+=" , ";
+                    }
+                }
+                //document.getElementById("txt").innerHTML = xmlhttp.responseText;
+            }
+        };
+        xmlhttp.open("GET",
+    "http://cspro.sogang.ac.kr/~cse20151600/cgi-bin/ajax_search.php?q=" + str, true);
+        xmlhttp.send();
+    }
+}
+
+</script>
+</head>
+<body>
+
+<p><b>Start typing a name in the input field below:</b></p>
+<form id="form1"> 
+First name: <input type="text" onkeyup="showHint(this.value)">
+</form>
+<p>Suggestions: <span id="txtHint"></span></p>
+<form id="form2">
+First name: <input type="text" onkeyup="showName(this.value)">
+</form>
+<p>Suggestions: <span id="txt"></span></p>
+<form id="form3">
+First name: <input type="text" onkeyup="showALL(this.value)">
+</form>
+<p>Suggestions: <span id="tot"></span></p>
+</body>
+</html>

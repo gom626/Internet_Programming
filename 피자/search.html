@@ -1,0 +1,32 @@
+<TITLE>	 Search.html </TITLE>
+<H1>Pizza Order Search</H1>
+<HR>
+<FORM METHOD="POST" ACTION="http://cspro.sogang.ac.kr/~cse20151600/cgi-bin/db_display.php">
+Type in your ID name: <INPUT type="text" NAME="ID"> <P>
+Type in your name : <INPUT type="text" NAME="name"> <P>
+Type in your e-mail address: <INPUT type="text" NAME="email"> <P>
+Type in your phone number: <INPUT type="text" NAME="phone"> <P>
+Which toppings would you like? <P>
+<OL>
+<LI> <INPUT TYPE="checkbox" NAME="topping" VALUE="pepperoni"> Pepperoni.
+<LI> <INPUT TYPE="checkbox" NAME="topping" VALUE="sausage"> Sausage.
+<LI> <INPUT TYPE="checkbox" NAME="topping" VALUE="anchovies"> Anchovies.
+</OL>
+How would you like to pay?  Choose any one of the following: <P>
+<OL>
+<LI> <INPUT TYPE="radio" NAME="paymethod" VALUE="cash" CHECKED> Cash.
+<LI> <INPUT TYPE="radio" NAME="paymethod" VALUE="check"> Check.
+<LI> <I>Credit card:</I>
+<UL>
+<LI> <INPUT TYPE="radio" NAME="paymethod" VALUE="mastercard"> Mastercard.
+<LI> <INPUT TYPE="radio" NAME="paymethod" VALUE="visa"> Visa.
+<LI> <INPUT TYPE="radio" NAME="paymethod" VALUE="americanexpress"> American Express.
+</UL>
+</OL>
+Would you like the driver to call before leaving the store? <P>
+<DL>
+<DD> <INPUT TYPE="radio" NAME="callfirst" VALUE="yes" CHECKED> <I>Yes.</I>
+<DD> <INPUT TYPE="radio" NAME="callfirst" VALUE="no"> <I>No.</I>
+</DL>
+To search your pizza, press this button: <INPUT TYPE="submit"VALUE="Search Pizza Order">. <P>
+
